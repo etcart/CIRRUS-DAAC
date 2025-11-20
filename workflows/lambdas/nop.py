@@ -1,11 +1,14 @@
 import logging
-
+import boto3
 from run_cumulus_task import run_cumulus_task
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-
+def _list_it():
+    s3 = boto3.client('s3')
+    response = s3.list_objects_v2(Bucket="ob-cumulus-sit-data-products-staging")
+    logging.warning(response)
 def _nop():
     """
     Implements the No Operation function. It does nothing!
@@ -25,7 +28,7 @@ def process_event(event, context):
     output.
     """
     result = _nop()
-
+    _list_it()
     return _cma_output(result)
 
 

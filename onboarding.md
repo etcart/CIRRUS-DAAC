@@ -1,0 +1,1 @@
+onboarding notes like the need to bring in s3 bucket permissions goes here
